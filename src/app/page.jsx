@@ -25,7 +25,7 @@ export default async function Home() {
                   <p className="card-text"><small className="text-muted">Genero: {objeto.genero_nome}</small></p>  
                 </div>
                 <div class="card-footer text-muted">                  
-                  <Link type="button" className="btn btn-secondary" href={`/${objeto.codigo}/detalhe`}>Detalhes do produto</Link>
+                  <Link type="button" className="btn btn-secondary" href={`/${objeto.codigo}/detalhe`}>Detalhes</Link>
                 </div>
               </div>
             </div>
