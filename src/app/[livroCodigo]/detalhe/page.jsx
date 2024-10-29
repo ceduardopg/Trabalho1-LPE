@@ -24,7 +24,6 @@ const LivroDetalhePage = async ({ params }) => {
                                     {livro.nome}
                                 </div>
                                 <div className="card-body ">
-                                    <h5 className="card-title">Código: {livro.codigo}</h5>
                                     <p className="card-text">{livro.nome}</p>
                                     <p className="card-text"><small className="text-muted">Ano: {livro.ano}</small></p>
                                     <p className="card-text"><small className="text-muted">Autor: {livro.autor}</small></p>

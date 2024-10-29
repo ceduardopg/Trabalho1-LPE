@@ -21,7 +21,6 @@ export default async function Home() {
                 </div>
                 <div className="card-body ">
                   <h5 className="card-title">{objeto.nome}</h5>              
-                  <p className="card-text"><small className="text-muted">Ano: {objeto.ano}</small></p>
                   <p className="card-text"><small className="text-muted">Genero: {objeto.genero_nome}</small></p>  
                 </div>
                 <div class="card-footer text-muted">                  
