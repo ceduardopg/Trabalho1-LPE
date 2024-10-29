@@ -2,11 +2,10 @@ import { notFound, redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { getGenerosDB } from '@/bd/usecases/generoUseCases';
 import { getLivroPorCodigoDB, addLivroDB, updateLivroDB } from '@/bd/usecases/livroUseCases';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import Form from 'react-bootstrap/Form';
 import Loading from '@/app/componentes/comuns/Loading';
+import CampoEntradaFloating from '@/app/componentes/comuns/CamposEntradaFloating';
+import CampoFormSelect from '@/app/componentes/comuns/CamposFormSelect';
 import { Suspense } from 'react';
-
 
 const FormularioPage = async ({ params }) => {
 
@@ -65,56 +64,42 @@ const FormularioPage = async ({ params }) => {
                         <div className="row justify-content-center">
                             <div className="col-12 col-md-6">
                                 <div>
-                                    <FloatingLabel controlId="campoCodigo"
-                                        label="Código" className="mb-3">
-                                        <Form.Control type="number"
-                                            defaultValue={livro.codigo} readOnly
-                                            name="codigo" />
-                                    </FloatingLabel>
+                                    <CampoEntradaFloating id="txtCodigo"
+                                        value={livro.codigo} tipo="text"
+                                        label="Código" readOnly={true}
+                                        name="codigo" />
                                 </div>
                                 <div>
-                                    <FloatingLabel controlId="campoNome"
-                                        label="Nome" className="mb-3">
-                                        <Form.Control type="text"
-                                            defaultValue={livro.nome} required
-                                            name="nome" />
-                                    </FloatingLabel>
+                                    <CampoEntradaFloating id="txtNome"
+                                        value={livro.nome} tipo="text"
+                                        label="Nome" required={true} name="nome" />
                                 </div>
                                 <div>
-                                    <FloatingLabel controlId="campoAno"
-                                        label="Ano" className="mb-3">
-                                        <Form.Control type="number"
-                                            defaultValue={livro.ano} required
-                                            name="ano"/>
-                                    </FloatingLabel>
+                                    <CampoEntradaFloating id="txtAno"
+                                        value={livro.ano} tipo="number"
+                                        label="Ano" required={true} name="ano" />
                                 </div>
                                 <div>
-                                    <FloatingLabel controlId="campoAutor"
-                                        label="Autor" className="mb-3">
-                                        <Form.Control type="text"
-                                            defaultValue={livro.autor} required
-                                            name="autor" />
-                                    </FloatingLabel>
+                                    <CampoEntradaFloating id="txtAutor"
+                                        value={livro.autor} tipo="text"
+                                        label="Autor" required={true} name="autor" />
                                 </div>
                                 <div>
-                                    <FloatingLabel controlId="selectGenero"
-                                        label="Genero" className="mb-3">
-                                        <Form.Select
-                                            defaultValue={livro.genero} required
-                                            name="genero">
-                                            <option disabled="true" value="">
-                                                Selecione o genero
+                                <CampoFormSelect id="selectGenero"
+                                    value={livro.genero} label="Genero" required="true"
+                                    name="genero">
+                                    <option disabled="true" value="">
+                                        Selecione a categoria
+                                    </option>
+                                    {
+                                        generos.map((gen) => (
+                                            <option key={gen.codigo}
+                                                value={gen.codigo}>
+                                                {gen.nome}
                                             </option>
-                                            {
-                                                generos.map((gen) => (
-                                                    <option key={gen.codigo}
-                                                        value={gen.codigo}>
-                                                        {gen.nome}
-                                                    </option>
-                                                ))
-                                            }
-                                        </Form.Select>
-                                    </FloatingLabel>
+                                        ))
+                                    }
+                                </CampoFormSelect>
                                 </div>
                                 <div className="form-group text-center mt-3">
                                     <button type="submit" className="btn btn-success">
